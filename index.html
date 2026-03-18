@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The "Zero Value" Shift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .panel {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { text-align: center; color: #222; }
+        h2 { color: #d9534f; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .evidence-img { 
+            width: 100%; 
+            height: auto; 
+            border: 1px solid #ddd; 
+            margin-top: 15px; 
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .caption {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f8f8; width: 30%; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>The "Zero Value" Shift</h1>
+    <p style="text-align:center;">How computational systems erase women's domestic labour in dual-income households.</p>
+
+    <div class="panel">
+        <h2>1. The Measurement Void</h2>
+        <p>
+        What is missing from official productivity data? Most systems only capture activities that generate measurable economic value. 
+        According to filtered ONS time-use data, women spend significantly more time on unpaid domestic labour than men. 
+        However, because this work is not digitally tracked or economically valued, it is effectively excluded from the data pipeline.
+        </p>
+        <img src="gender_data_gap.png" alt="ONS Data Chart" class="evidence-img">
+        <p class="caption">
+        Evidence 01: Filtered ONS data shows that women spend substantially more time on unpaid labour than men.
+        </p>
+    </div>
+
+    <div class="panel">
+        <h2>2. Encoding Bias into Data</h2>
+        <p>
+        To demonstrate how bias is written into data, I constructed a dataset using Teachable Machine. 
+        Images were generated using DeepAI across a range of scenarios, including different types of paid work and household labour.
+        </p>
+
+        <p>
+        Importantly, no gendered terms (such as “man” or “woman”) were used in the prompts. 
+        However, the generated results revealed a pattern: images of paid work were predominantly male, while domestic scenes were more often female.
+        </p>
+
+        <p>
+        The dataset was then organised into two categories: <strong>Class 1: Paid Work</strong> and <strong>Class 2: Zero Value</strong>. 
+        This setup reflects how human-defined categories can embed assumptions into the data itself.
+        </p>
+
+        <img src="tm_setup.png" alt="Teachable Machine Setup" class="evidence-img">
+
+        <p>
+        As shown in the diagram below, the model does not understand “value”. It learns visual patterns — such as environment, actions, and tools — and maps them to the given labels, effectively reproducing the bias already present in the dataset.
+        </p>
+        <img src="tm_bias_diagram.png" alt="Bias Formation Diagram" class="evidence-img">
+        <p class="caption">Evidence 02 & 03: Dataset construction and bias formation process.</p>
+    </div>
+
+    <div class="panel">
+        <h2>3. The Confidence of Erasure (Model Behaviour)</h2>
+        <p>
+        Once trained, the model produces highly confident predictions. 
+        When presented with an image of someone performing domestic labour, the system classifies it as “Zero Value” with near certainty.
+        </p>
+
+        <p>
+        This confidence does not reflect true understanding, but rather the limitations of the dataset. 
+        The model appears certain, while in fact reproducing a simplified and biased definition of value.
+        </p>
+        <img src="tm_preview_100.png" alt="Teachable Machine 100% Zero Value Preview" class="evidence-img">
+        <p class="caption">Evidence 04: Domestic labour classified as 100% "Zero Value".</p>
+    </div>
+
+    <div class="panel">
+        <h2>4. Interface Deception (Before Intervention)</h2>
+        <p>
+        This bias extends beyond the model into the interface. 
+        Based on the classification process above, the system generates a “Productivity Score” for a dual-income household.
+        </p>
+
+        <p>
+        Because unpaid domestic labour is excluded, the interface presents one side — typically paid work — as more valuable. 
+        In this way, existing inequalities are not only preserved, but presented as objective and data-driven.
+        </p>
+        <img src="dashboard_before.png" alt="Dashboard Before" class="evidence-img">
+        <p class="caption">Evidence 05: The default interface hides domestic contributions.</p>
+    </div>
+
+    <div class="panel">
+        <h2>5. Algorithmic Re-weighting (After Intervention)</h2>
+        <p>
+        This intervention does not aim to directly change social structures, but to make hidden contributions visible. 
+        By assigning value to previously ignored domestic labour, the system produces a different outcome.
+        </p>
+
+        <p>
+        Compared to the original version, the adjusted interface reveals the extent of women's contributions within the household. 
+        What was previously labelled as “Zero Value” is now recognised as meaningful work.
+        </p>
+
+        <p>
+        At the same time, this contrast highlights how bias exists in the original data and system design.
+        </p>
+        <img src="dashboard_after.png" alt="Dashboard After" class="evidence-img">
+        <p class="caption">Evidence 06: Re-weighting reveals hidden labour and exposes bias.</p>
+    </div>
+
+    <div class="panel">
+        <h2>6. Process & Reflection</h2>
+
+        <table>
+            <tr>
+                <th>Stage</th>
+                <th>What Happens</th>
+                <th>Where Bias Enters</th>
+            </tr>
+            <tr>
+                <td>Data Collection</td>
+                <td>Images are generated and grouped into categories (Paid Work vs Zero Value)</td>
+                <td>Human-defined labels and dataset composition embed assumptions about value</td>
+            </tr>
+            <tr>
+                <td>Model Training</td>
+                <td>The model learns visual patterns (environment, actions, tools)</td>
+                <td>Correlation is mistaken for meaning; “value” is reduced to visual cues</td>
+            </tr>
+            <tr>
+                <td>Prediction</td>
+                <td>The model outputs confident classifications</td>
+                <td>Bias becomes reinforced and appears objective</td>
+            </tr>
+            <tr>
+                <td>Interface</td>
+                <td>Results are visualised as scores and comparisons</td>
+                <td>Hidden labour is excluded, making inequality look neutral and data-driven</td>
+            </tr>
+        </table>
+
+        <p>
+        This project is not about fixing a model, but about exposing a process. By reconstructing each stage from data to interface, the project shows how bias is gradually introduced, reinforced, and presented as truth.
+        </p>
+
+        <p>
+        The intervention does not resolve inequality, but makes it visible. By re-weighting what counts as “value”, the system reveals contributions that were previously ignored, and highlights how data-driven systems can quietly inherit human assumptions.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
