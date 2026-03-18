@@ -65,6 +65,27 @@
 
     <div class="panel">
         <h2>2. Encoding Bias into Data</h2>
+        <p style="text-align:center; font-size:0.9em; color:#cd7070;">
+Click to explore image samples from each category
+</p>
+<div style="text-align:center; margin-top:10px;">
+    <button onclick="showWork()">Paid Work</button>
+    <button onclick="showHome()">Zero Value</button>
+</div>
+
+<div id="image-container" style="display:none;">
+    <div id="image-grid" style="
+        margin-top:20px;
+        height:300px;
+        overflow-y:auto;
+        border:1px solid #ddd;
+        padding:10px;
+        display:grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap:10px;
+    "></div>
+</div>
+
         <p>
         To demonstrate how bias is written into data, I constructed a dataset using Teachable Machine. 
         Images were generated using DeepAI across a range of scenarios, including different types of paid work and household labour.
@@ -179,6 +200,119 @@
     </div>
 
 </div>
+
+<script>
+const workImages = [
+    "images/work/1.jpg",
+    "images/work/2.jpg",
+    "images/work/3.jpg",
+    "images/work/4.jpg",
+    "images/work/5.jpg",
+    "images/work/6.jpg",
+    "images/work/7.jpg",
+    "images/work/8.jpg",
+    "images/work/9.jpg",
+    "images/work/10.jpg",
+    "images/work/11.jpg",
+    "images/work/12.jpg",
+    "images/work/13.jpg",
+    "images/work/14.jpg",
+    "images/work/15.jpg",
+    "images/work/16.jpg",
+    "images/work/17.jpg",
+    "images/work/18.jpg",
+    "images/work/19.jpg",
+    "images/work/20.jpg",
+    "images/work/21.jpg",
+    "images/work/22.jpg",
+    "images/work/23.jpg",
+    "images/work/24.jpg",
+    "images/work/25.jpg",
+    "images/work/26.jpg",
+    "images/work/27.jpg",
+    "images/work/28.jpg",
+    "images/work/29.jpg",
+    "images/work/30.jpg",
+    "images/work/31.jpg",
+    "images/work/32.jpg",
+    "images/work/33.jpg",
+    "images/work/34.jpg",
+    "images/work/35.jpg",
+    "images/work/36.jpg",
+    "images/work/37.jpg",
+    "images/work/38.jpg",
+    "images/work/39.jpg",
+    "images/work/40.jpg"
+];
+
+const homeImages = [
+    "images/home/1.jpg",
+    "images/home/2.jpg",
+    "images/home/3.jpg",
+    "images/home/4.jpg",
+    "images/home/5.jpg",
+    "images/home/6.jpg",
+    "images/home/7.jpg",
+    "images/home/8.jpg",
+    "images/home/9.jpg",
+    "images/home/10.jpg",
+    "images/home/11.jpg",
+    "images/home/12.jpg",
+    "images/home/13.jpg",
+    "images/home/14.jpg",
+    "images/home/15.jpg",
+    "images/home/16.jpg",
+    "images/home/17.jpg",
+    "images/home/18.jpg",
+    "images/home/19.jpg",
+    "images/home/20.jpg",
+    "images/home/21.jpg",
+    "images/home/22.jpg",
+    "images/home/23.jpg",
+    "images/home/24.jpg",
+    "images/home/25.jpg",
+    "images/home/26.jpg",
+    "images/home/27.jpg",
+    "images/home/28.jpg",
+    "images/home/29.jpg",
+    "images/home/30.jpg",
+    "images/home/31.jpg",
+    "images/home/32.jpg",
+    "images/home/33.jpg",
+    "images/home/34.jpg",
+    "images/home/35.jpg",
+    "images/home/36.jpg",
+    "images/home/37.jpg",
+    "images/home/38.jpg",
+    "images/home/39.jpg",
+    "images/home/40.jpg"
+];
+
+function showWork() {
+    displayImages(workImages);
+}
+
+function showHome() {
+    displayImages(homeImages);
+}
+
+function displayImages(images) {
+    const container = document.getElementById("image-grid");
+    const wrapper = document.getElementById("image-container");
+
+    wrapper.style.display = "block";
+
+    container.innerHTML = "";
+
+    images.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.style.width = "100%";
+        img.style.borderRadius = "6px";
+        container.appendChild(img);
+    });
+}
+</script>
 
 </body>
 </html>
